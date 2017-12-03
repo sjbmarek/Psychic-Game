@@ -5,7 +5,9 @@
     var guessNumber = 10;
     var yourGuesses =[]
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    
+    var imageList = [src="images/winner.jpg", src="images/dontgiveup.jpg", src="images/loser.jpg"]
+
+
     console.log (computerGuess);
 
     // This function is run whenever the user presses a key.
@@ -22,6 +24,8 @@
         wins++;
         computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
         console.log (computerGuess);
+        var image=imageList[0];
+        document.querySelector("#image").innerHTML = image;
       }
 
       //Keep guessing and array the guesses
@@ -59,7 +63,6 @@
       "<p>Wins: " + wins + "</p>" +
       "<p>Loses: " + losses + "</p>" +
       "<p>Number of Guesses Remaining: " + guessNumber + "</p>" +
-
       "<p>Letters you have already guessed: " + yourGuesses + "</p>";
 
       document.querySelector("#game").innerHTML = html;
