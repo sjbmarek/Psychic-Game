@@ -5,27 +5,29 @@
     var guessNumber = 10;
     var yourGuesses =[]
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    var imageList = [src="images/winner.jpg", src="images/dontgiveup.jpg", src="images/loser.jpg"]
-
-
+    var imageList = ["assets/images/winner.jpg","assets/images/dontgiveup.jpg","assets/images/loser.jpg"];
     console.log (computerGuess);
 
     // This function is run whenever the user presses a key.
-      document.onkeyup = function(event) {
+    document.onkeyup = function(event) {
       var userGuess = event.key;
       console.log (userGuess);
 
       // This is the user guess
       alert("You guessed: " + userGuess);
+      // Reset image to blank space here.
 
-
-      //Winner, computer picks a new letter, wins increment
+      //Winner, computer picks a new letter, wins increment, reset array
       if (userGuess===computerGuess){
         wins++;
         computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
         console.log (computerGuess);
-        var image=imageList[0];
-        document.querySelector("#image").innerHTML = image;
+
+        // Get this image thing to work and then duplicate for each outcome.
+        var picture = 
+        "<img src =" + imageList[0] + ">";
+        document.querySelector("#image").innerHTML = (picture);
+        yourGuesses =[];
       }
 
       //Keep guessing and array the guesses
@@ -36,6 +38,10 @@
           //Adds guess to the array
           yourGuesses.push(userGuess);
           console.log("yourGuesses  " + yourGuesses);
+
+          var picture = 
+          "<img src =" + imageList[1] + ">";
+         document.querySelector("#image").innerHTML = (picture);
       }
       // Loser - When limit is reached, pick a new letter, increment losses, reset icrementer, reset array
       else if ((userGuess!==computerGuess)&&(guessNumber=1)){
@@ -45,6 +51,10 @@
           console.log (computerGuess);
           guessNumber=10;
           yourGuesses =[];
+
+          var picture = 
+          "<img src =" + imageList[2] + ">";
+          document.querySelector("#image").innerHTML = (picture);
 
         
       }
